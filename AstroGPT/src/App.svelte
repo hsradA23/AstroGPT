@@ -47,7 +47,7 @@
     background-color: #397c65;
     border: none;
     padding: 0.1vh;
-    height: 5vh;
+    height: 5.5vh;
     width: 10%;
     color: white;
     border-radius: 10px;
@@ -88,5 +88,16 @@
     color: white;
     padding: 1vh 2vw 1vh 2vw;
     border-bottom: 2px solid #6e7085; 
+  }
+  @media only screen and (max-width: 767px) {
+    .content {
+    padding: 1vh 2vw 0.5vh 2vw;
+  }
+  button{
+    width: 15%;
+  }
+  input{
+    width: 85%;
+  }
   }
 </style>
