@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
 
 from simplet5 import SimpleT5
 
@@ -10,6 +12,7 @@ model.load_model("t5","/home/adarsh/IMD/backend/simplet5-epoch-6-train-loss-1.06
 
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="dist"), name="static")
 
 app.add_middleware(
  CORSMiddleware,
@@ -19,7 +22,10 @@ app.add_middleware(
  allow_headers=["*"],
 )
 
-
+@app.get("/")
+async def redirect():
+    response = RedirectResponse(url='/static/index.html')
+    return response
 
 @app.get("/echo/{text}")
 async def echo_text(text: str):

@@ -6,7 +6,7 @@
 
     arr = [...arr, "You: " + prompt]
 
-    fetch("http://127.0.0.1:8000/echo/" + prompt)
+    fetch("/echo/" + prompt)
       .then((r) => r.text())
       .then((t) => {
         arr = [...arr, t.replaceAll('"', "")];
